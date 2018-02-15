@@ -290,12 +290,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Players:
-  - John
-  - Johnny
-  - Johnnyboy
-  - Jonnyboi
-  - Juan
-  Scores: 0a00000009000000080000000700000006000000
+  - {fileID: 11400000, guid: ef2bf67da2d8b4543aa07c203939dbd0, type: 2}
+  - {fileID: 11400000, guid: 7d72c27bacb5b73448147fc2931c37f7, type: 2}
+  HighScores: 0a00000009000000080000000700000006000000
 --- !u!23 &968896879
 MeshRenderer:
   m_ObjectHideFlags: 0
