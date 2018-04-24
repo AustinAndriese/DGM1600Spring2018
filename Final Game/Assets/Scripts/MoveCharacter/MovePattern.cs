@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[CreateAssetMenu(fileName = "movePattern")]
+[CreateAssetMenu(fileName = "MovePattern")]
 public class MovePattern :  MovePatternBase 
 {
 
@@ -9,10 +9,10 @@ public class MovePattern :  MovePatternBase
 	{
 		if (controller.isGrounded)
 		{
-			rotationDirection.Set(InputRotateX.SetFloat(), InputRotateY.SetFloat(), InputRotateZ.SetFloat());
-			transform.Rotate(rotationDirection);
+			RotateDirection.Set(InputRotateX.SetFloat(), InputRotateY.SetFloat(), InputRotateZ.SetFloat());
+			transform.Rotate(RotateDirection);
 
-			moveDirection.Set(InputX.SetFloat),(InputY.SetFloat),(InputZ.SetFloat);
+			moveDirection.Set(InputX.SetFloat(),InputY.SetFloat(),InputZ.SetFloat());
 			moveDirection = transform.TransformDirection(moveDirection);
 
 			moveDirection *= speed;

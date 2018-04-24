@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class CharacterMove : MonoBehaviour
 {
@@ -16,10 +17,24 @@ public class CharacterMove : MonoBehaviour
 	{
 		controller = GetComponent<CharacterController>();
 	}
-void Update()
-	if (ControllerColliderHit.isGrounded)
+
+	void Update()
 	{
-		
+		if (controller.isGrounded)
+
+		{
+			//rotateDirection.y = Input.GetAxis("Horizontal");
+			transform.Rotate(rotateDirection);
+			moveDirection.Set(Input.GetAxis("Horizontal"), 0, 0);
+			moveDirection = transform.TransformDirection(moveDirection);
+			moveDirection *= speed;
+			if (Input.GetButton("Jump"))
+				moveDirection.y = jumpSpeed;
+
+		}
+
+		moveDirection.y -= gravity * Time.deltaTime;
+		controller.Move(moveDirection * Time.deltaTime);
+
 	}
-	
 }

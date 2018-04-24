@@ -5,16 +5,11 @@ using UnityEngine;
 public class Trigger : MonoBehaviour {
 
 	public Powerup Powerup;
-	private MovePattern prevMovePattern;
-
+	
 	private void OnTriggerEnter(Collider obj)
 	{
-		prevMovePattern = obj.GetComponent<MoveCharacter>().MovePattern;
 
-		obj.GetComponent<MoveCharacter>().MovePattern = Powerup.MovePattern;
-
-
-		
+		obj.GetComponent<MoveCharacter>().Player.MovePattern = Powerup.MovePattern;
 		gameObject.SetActive(false);
 
 	}

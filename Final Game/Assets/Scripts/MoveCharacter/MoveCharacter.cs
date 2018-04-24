@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveCharacter : MonoBehaviour {
+public class MoveCharacter : MonoBehaviour
+{
 
-public MovePattern MovePattern;
+public Player Player;
 private CharacterController controller;
 
 private void Start()
@@ -14,7 +15,7 @@ private void Start()
 }
 void Update()
 {
-    MovePattern.Move(controller,transform);
+    Player.MovePattern.Move(controller, transform);
 }
 
 }
