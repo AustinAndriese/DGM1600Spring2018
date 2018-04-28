@@ -14,13 +14,13 @@ public class Character : MonoBehaviour
     public Rigidbody2D rig;
     public bool IsGrounded;
     public int Health;
-    public bool ShotTimer;
-    public float ShootTimer = .2f;
+    //public bool ShotTimer;
+    //public float ShootTimer = .2f;
 
 
     void Start()
     {
-       
+        IsGrounded = true;
         //ShotTimer = false;
     }
 
@@ -53,6 +53,7 @@ public class Character : MonoBehaviour
                 //anim.SetBool("IsShooting", true);
                // ShotTimer = true;
            // }
+        //}
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
@@ -79,8 +80,6 @@ public class Character : MonoBehaviour
                 sr.flipX = true;
             }
             else anim.SetBool("IsWalking", false);
-            
-       // }
     }
 
     void OnCollisionEnter2D(Collision2D col)
