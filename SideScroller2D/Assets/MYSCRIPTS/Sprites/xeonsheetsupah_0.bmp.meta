@@ -28,6 +28,10 @@ TextureImporter:
     21300042: xeonsheetsupah_0_21
     21300044: xeonsheetsupah_0_22
     21300046: xeonsheetsupah_0_23
+    21300048: xeonsheetsupah_0_24
+    21300050: xeonsheetsupah_0_25
+    21300052: xeonsheetsupah_0_26
+    21300054: xeonsheetsupah_0_27
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -104,20 +108,6 @@ TextureImporter:
   spriteSheet:
     serializedVersion: 2
     sprites:
-    - serializedVersion: 2
-      name: xeonsheetsupah_0_0
-      rect:
-        serializedVersion: 2
-        x: 187
-        y: 511
-        width: 41
-        height: 60
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
     - serializedVersion: 2
       name: xeonsheetsupah_0_1
       rect:
@@ -366,6 +356,146 @@ TextureImporter:
         height: 62
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: xeonsheetsupah_0_0
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 100
+        width: 42
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: xeonsheetsupah_0_5
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 101
+        width: 49
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: xeonsheetsupah_0_6
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 100
+        width: 57
+        height: 65
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: xeonsheetsupah_0_7
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 100
+        width: 57
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: xeonsheetsupah_0_8
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 101
+        width: 57
+        height: 65
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: xeonsheetsupah_0_9
+      rect:
+        serializedVersion: 2
+        x: 326
+        y: 110
+        width: 33
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: xeonsheetsupah_0_24
+      rect:
+        serializedVersion: 2
+        x: 362
+        y: 112
+        width: 33
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: xeonsheetsupah_0_25
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 112
+        width: 33
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: xeonsheetsupah_0_26
+      rect:
+        serializedVersion: 2
+        x: 433
+        y: 112
+        width: 33
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: xeonsheetsupah_0_27
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 217
+        width: 16
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

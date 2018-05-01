@@ -9,6 +9,8 @@ public class Enemy : MonoBehaviour
 	public float distance;
 	public bool MovingRight = true;
 	public Transform GroundDetection;
+	public int EnemyHealth;
+	
 
 	void Update()
 	{ //PatrolScript
@@ -29,5 +31,16 @@ public class Enemy : MonoBehaviour
 				MovingRight = true;
 			}
 		}
+
+		if (EnemyHealth <= 0)
+		{
+			Destroy(gameObject);
+		}
+	}
+	//Damagesystem
+	public void Damage(int damage)
+	{
+		EnemyHealth -= damage;
+		gameObject.GetComponent<Animation>().Play("Player_RedFlash");
 	}
 }
