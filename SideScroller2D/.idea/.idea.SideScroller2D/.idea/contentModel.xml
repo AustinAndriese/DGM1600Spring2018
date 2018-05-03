@@ -10,11 +10,11 @@
       <e p="Assets" t="Include">
         <e p="MYSCRIPTS" t="Include">
           <e p="Scripts" t="Include">
-            <e p="AI" t="Include">
+            <e p="CameraFollow.cs" t="Include" />
+            <e p="Enemy" t="Include">
               <e p="AI.cs" t="Include" />
               <e p="Enemy.cs" t="Include" />
             </e>
-            <e p="CameraFollow.cs" t="Include" />
             <e p="HeartScript.cs" t="Include" />
             <e p="Menues" t="Include">
               <e p="MainMenu.cs" t="Include" />

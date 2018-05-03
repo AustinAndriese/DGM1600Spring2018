@@ -24,7 +24,12 @@ public class PauseScreen : MonoBehaviour
 			}
 		}
 	}
-
+	public void RestartScene()
+	{
+		SceneManager.LoadScene("Level1");
+		Time.timeScale = 1f;
+	}
+	
 	public void Resume()
 	{
 		PauseMenuUI.SetActive(false);

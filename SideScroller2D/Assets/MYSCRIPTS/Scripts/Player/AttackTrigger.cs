@@ -5,13 +5,23 @@ using UnityEngine;
 public class AttackTrigger : MonoBehaviour
 {
 
-	public int Dmg = 20;
+	private Enemy enemy;
 
-	private void OnTriggerEnter2D(Collider2D col)
+	void Start()
 	{
-		if (col.isTrigger != true && col.CompareTag("Enemy"))
+		enemy = GameObject.FindGameObjectWithTag("Enemy").GetComponent<Enemy>();
+		if (enemy != null)
 		{
-			col.SendMessageUpwards("Damage", Dmg);
+			print("Enemies Defeated");
 		}
 	}
+
+	void OnTriggerEnter2D(Collider2D col)
+	{
+		if (col.CompareTag("Enemy"))
+		{
+			enemy.Damage(20);
+		}
+	}
+
 }

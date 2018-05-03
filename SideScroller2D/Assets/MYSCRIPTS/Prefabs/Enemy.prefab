@@ -23,8 +23,9 @@ GameObject:
   - component: {fileID: 114154632347639432}
   - component: {fileID: 23468589552552054}
   - component: {fileID: 50256265278678102}
-  - component: {fileID: 70220254734576700}
-  m_Layer: 0
+  - component: {fileID: 61236421681827156}
+  - component: {fileID: 111886413435404102}
+  m_Layer: 9
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -39,7 +40,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4701126875916660}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GroundDetection
   m_TagString: Untagged
   m_Icon: {fileID: 8220585740371884164, guid: 0000000000000000d000000000000000, type: 0}
@@ -66,7 +67,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1663385545456934}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 48.1, y: -0.21000671, z: 0.067856}
+  m_LocalPosition: {x: 41.17, y: -0.25, z: 0.067856}
   m_LocalScale: {x: 0.9065399, y: 1, z: 1}
   m_Children:
   - {fileID: 4701126875916660}
@@ -134,8 +135,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!70 &70220254734576700
-CapsuleCollider2D:
+--- !u!61 &61236421681827156
+BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -147,8 +148,32 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
   m_Size: {x: 0.99999994, y: 2}
-  m_Direction: 0
+  m_EdgeRadius: 0
+--- !u!111 &111886413435404102
+Animation:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1663385545456934}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: a3ea571f5bb16f446b678c42212b8894, type: 2}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!114 &114154632347639432
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -164,3 +189,5 @@ MonoBehaviour:
   distance: 0
   MovingRight: 1
   GroundDetection: {fileID: 4701126875916660}
+  Particle: {fileID: 0}
+  EnemyHealth: 20

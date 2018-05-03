@@ -5,32 +5,46 @@ using System.IO;
 using System.Runtime.Serialization.Formatters;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Networking;
+using UnityEngine.SceneManagement;
 
 public class Character : MonoBehaviour
 {
-    public int Speed = 10;
     public SpriteRenderer sr;
     public Animator anim;
-    public float JumpForce;
     public Rigidbody2D rig;
-    public bool IsGrounded;
-    public int Health;
-    public Transform PositionLeft;
-    public Transform PositionRight;
     public GameObject Bullet;
+    public GameObject RestartButton;
+    public Transform PositionRight;
+    public Transform PositionLeft;
+    public int Health;
+    public int Speed;
+    public float JumpForce;
     public float ShotSpeed;
-    public bool ShotTimer;
     public float ShootTimer = .2f;
+    bool ShotTimer;
+    bool IsGrounded;
+    
+    
+    
+    public static Character instance;
+    public float InvincibleTimeAfterHurt;
+    public Collider2D[] MyColls;
+    
+    
 
 
-    void Start()
-    {
+    public void Start()
+    {   
+        instance = this;
+        MyColls = this.GetComponents<Collider2D>();
         ShotTimer = false;
+        //RestartButton.SetActive(false);
     }
 
     void Update()
     {
-        if (ShotTimer = true)
+        if (ShotTimer)
             ShootTimer -= Time.deltaTime;
         if (ShootTimer <= 0)
         {
@@ -42,33 +56,38 @@ public class Character : MonoBehaviour
         Movement();
         if (IsGrounded) anim.SetBool("IsGrounded", true);
         else anim.SetBool("IsGrounded", false);
+        //gravity adjusting the jump
         if (rig.velocity.y < 0)
         {
             rig.velocity += Vector2.up * Physics2D.gravity.y * 2 * Time.deltaTime;
+        }
+
+        if (Health <= 0)
+        {
+            Die();
         }
     }
 
     void Movement()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             if (!ShotTimer)
             {
                 if (!sr.flipX)
                 {
-                        GameObject newBullet = Instantiate(Bullet, PositionLeft.position, transform.rotation);
-                        newBullet.GetComponent<Rigidbody2D>().velocity = Vector2.right * -ShotSpeed;
+                    GameObject newBullet = Instantiate(Bullet, PositionLeft.position, transform.rotation);
+                    newBullet.GetComponent<Rigidbody2D>().velocity = Vector2.right * ShotSpeed;
                 }
                 else
                 {
                     GameObject newBullet = Instantiate(Bullet, PositionRight.position, transform.rotation);
-                    newBullet.GetComponent<Rigidbody2D>().velocity = Vector2.right * ShotSpeed;   
+                    newBullet.GetComponent<Rigidbody2D>().velocity = Vector2.right * -ShotSpeed;   
                 }
                 anim.SetBool("IsShooting", true);
                 ShotTimer = true;
             }
         }
-      
 
             if (Input.GetKeyDown(KeyCode.W))
             {
@@ -97,13 +116,72 @@ public class Character : MonoBehaviour
             else anim.SetBool("IsWalking", false);
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnCollisionEnter2D(Collision2D col)
     {
-        if (collision.gameObject.tag == "Ground")
+        if (col.gameObject.tag == "Ground")
         {
             IsGrounded = true;
             anim.SetBool("IsGrounded", true);
         }
 
+        //Enemy enemy = col.collider.GetComponent<Enemy>();
+        //if (enemy != null)
+        //{
+          //  Hurt();
+        //}
+    //}
+
+    //void Hurt()
+   // {
+        //Health--;
+        //if (Health <= 0)
+            //Application.LoadLevel((Application.loadedLevel));
+        //else
+            //TriggerHurt(InvincibleTimeAfterHurt);
+        if (col.gameObject.tag.Equals("Enemy"))
+        {
+            RestartButton.SetActive(true);
+            gameObject.SetActive(false);
+        }
+    }
+
+    public void TriggerHurt(float HurtTime)
+    {
+        StartCoroutine(HurtBlinker(HurtTime));
+    }
+
+    IEnumerator HurtBlinker(float HurtTime)
+    {
+        //Ignore enemy collision
+        
+        int enemyLayer = LayerMask.NameToLayer("Enemy");
+        int playerLayer = LayerMask.NameToLayer("Player");
+        
+        Physics2D.IgnoreLayerCollision(enemyLayer, playerLayer);
+        
+        foreach (Collider2D collider in Character.instance.MyColls)
+        {
+            collider.enabled = false;
+            collider.enabled = true;
+        }
+           
+        
+        anim.SetLayerWeight(1, 1);
+        
+        yield return new WaitForSeconds(HurtTime);
+        
+        Physics2D.IgnoreLayerCollision(enemyLayer, playerLayer, false);
+        anim.SetLayerWeight(1, 0);
+
+
+    }
+
+    void Die()
+    {
+        SceneManager.LoadScene("Level1");
+    }
+    public void Damage(int Dmg)
+    {
+        Health -= Dmg;
     }
 }

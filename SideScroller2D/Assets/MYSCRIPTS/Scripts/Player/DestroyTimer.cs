@@ -7,7 +7,6 @@ public class DestroyTimer : MonoBehaviour
 
 	public float Timer;
 	
-	// Update is called once per frame
 	public void Update ()
 	{
 		Timer -= Time.deltaTime;
