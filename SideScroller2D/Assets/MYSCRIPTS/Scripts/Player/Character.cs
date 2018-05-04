@@ -24,6 +24,7 @@ public class Character : MonoBehaviour
     public float ShootTimer = .2f;
     bool ShotTimer;
     bool IsGrounded;
+    private GameMaster GM;
     
     
     
@@ -40,6 +41,7 @@ public class Character : MonoBehaviour
         MyColls = this.GetComponents<Collider2D>();
         ShotTimer = false;
         //RestartButton.SetActive(false);
+        GM = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster>();
     }
 
     void Update()
@@ -123,57 +125,12 @@ public class Character : MonoBehaviour
             IsGrounded = true;
             anim.SetBool("IsGrounded", true);
         }
-
-        //Enemy enemy = col.collider.GetComponent<Enemy>();
-        //if (enemy != null)
-        //{
-          //  Hurt();
-        //}
-    //}
-
-    //void Hurt()
-   // {
-        //Health--;
-        //if (Health <= 0)
-            //Application.LoadLevel((Application.loadedLevel));
-        //else
-            //TriggerHurt(InvincibleTimeAfterHurt);
+        
         if (col.gameObject.tag.Equals("Enemy"))
         {
             RestartButton.SetActive(true);
             gameObject.SetActive(false);
         }
-    }
-
-    public void TriggerHurt(float HurtTime)
-    {
-        StartCoroutine(HurtBlinker(HurtTime));
-    }
-
-    IEnumerator HurtBlinker(float HurtTime)
-    {
-        //Ignore enemy collision
-        
-        int enemyLayer = LayerMask.NameToLayer("Enemy");
-        int playerLayer = LayerMask.NameToLayer("Player");
-        
-        Physics2D.IgnoreLayerCollision(enemyLayer, playerLayer);
-        
-        foreach (Collider2D collider in Character.instance.MyColls)
-        {
-            collider.enabled = false;
-            collider.enabled = true;
-        }
-           
-        
-        anim.SetLayerWeight(1, 1);
-        
-        yield return new WaitForSeconds(HurtTime);
-        
-        Physics2D.IgnoreLayerCollision(enemyLayer, playerLayer, false);
-        anim.SetLayerWeight(1, 0);
-
-
     }
 
     void Die()
@@ -183,5 +140,21 @@ public class Character : MonoBehaviour
     public void Damage(int Dmg)
     {
         Health -= Dmg;
+        gameObject.GetComponent<Animation>().Play("AlphaBlink");
+    }
+
+    public IEnumerator Knockback(float knockDurration, float knockbackPower, Vector3 knockbackDirection)
+    {
+        float timer = 0;
+        rig.velocity = new Vector2(rig.velocity.x, 0);
+        while (knockDurration > timer)
+        {
+            timer += Time.deltaTime;
+            rig.AddForce(new Vector3(knockbackDirection.x * -5, knockbackDirection.y + knockbackPower,
+                transform.position.z));
+            
+        }
+
+        yield return 0;
     }
 }

@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 [CreateAssetMenu]
-public class PowerUp : ScriptableObject {
+public class PowerUp : ScriptableObject
+{
 
+    public Character character;
 
 }

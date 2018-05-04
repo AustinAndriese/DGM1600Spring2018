@@ -20,9 +20,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4268850136364688}
   - component: {fileID: 212184604002124168}
-  - component: {fileID: 114117483172461236}
   - component: {fileID: 61641059932458930}
   - component: {fileID: 50685238622053648}
+  - component: {fileID: 114117483172461236}
   - component: {fileID: 114059720027508898}
   m_Layer: 0
   m_Name: Bullet
@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49fa7c65120148c4f8ebef87602e8db2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Timer: 4
+  Timer: 1.5
 --- !u!114 &114117483172461236
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -112,7 +112,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f58f0fd78effbdb4f9356e20788dbdc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Dmg: 20
 --- !u!212 &212184604002124168
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using ProBuilder2.Common;
 using UnityEngine;
+using UnityEngine.WSA;
 
 public class Enemy : MonoBehaviour
 {
@@ -11,7 +13,10 @@ public class Enemy : MonoBehaviour
 	public bool MovingRight = true;
 	public Transform GroundDetection;
 	public GameObject Particle;
+	public GameObject EnemyAi;
 	public int EnemyHealth;
+	public Enemy enemy;
+	private GameMaster GM;
 
 
 	void Update()
@@ -39,6 +44,7 @@ public class Enemy : MonoBehaviour
 		{
 			//Instantiate(Particle, Transform.position, Transform.rotation);
 			Destroy(gameObject);
+			GM.Points += 10;
 		}
 	}
 
@@ -48,6 +54,8 @@ public class Enemy : MonoBehaviour
 	void Start()
 	{
 		character = GameObject.FindGameObjectWithTag("Player").GetComponent<Character>();
+		
+		GM = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster>();
 	}
 
 	void OnTriggerEnter2D(Collider2D col)
@@ -56,6 +64,7 @@ public class Enemy : MonoBehaviour
 		{
 			character.Damage(1);
 		}
+		//StartCoroutine(character.Knockback(0.02f, 350, character.transform.position));
 	}
 
 	public void Damage(int Dmg)
@@ -67,6 +76,36 @@ public class Enemy : MonoBehaviour
 		//EnemyHealth -= Dmg;
 		//gameObject.GetComponent<Animation>().Play("AlphaBlink");
 	}
+
+	public Enemies enemies;
+	
+	public enum Enemies
+	{
+		EnemyAi1,
+		EnemyAi2,
+		EnemyAi3
+		
+	}
+void EnemiesDestroyed()
+{
+	switch (enemies)
+	{
+		case Enemies.EnemyAi1:
+			print("Enemy1");
+			break;
+		case Enemies.EnemyAi2:
+			print("Enemy2");
+			break;
+		case Enemies.EnemyAi3:
+			print("Enemy3");
+			break;
+		default:
+			print("Enemies Defeated");
+			break;
+	}
+
+}
+		
 
 }
 	

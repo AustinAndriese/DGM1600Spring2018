@@ -12,6 +12,10 @@ public class AttackTrigger : MonoBehaviour
 		enemy = GameObject.FindGameObjectWithTag("Enemy").GetComponent<Enemy>();
 		if (enemy != null)
 		{
+			print("Enemies Remaining");
+		}
+		else
+		{
 			print("Enemies Defeated");
 		}
 	}
